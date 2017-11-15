@@ -174,8 +174,8 @@ light green : #a6e22e
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 100%;
-  background-color: #191919;
   text-align: center;
+  background-color: #fff;
 }
 
 html,
@@ -197,6 +197,7 @@ body {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  background-color: #fff;
 }
 
 .slide-content {
