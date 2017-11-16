@@ -7,7 +7,8 @@
     "serve": "node devServer",
     "build": "cleaver src/index.md && echo 'Finished cleaver build'",
     "build:debug": "cleaver --debug src/index.md && echo 'Finished cleaver build'",
-    "watch": "watch 'npm run build' src"
+    "watch": "watch 'npm run build' src",
+    "deploy": "git subtree push --prefix public origin gh-pages"
   },
   "devDependencies": {
     "cleaver": "^0.8.2",
