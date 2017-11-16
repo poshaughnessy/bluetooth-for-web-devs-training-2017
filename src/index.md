@@ -172,7 +172,7 @@ var my8BitInt = dataView.getUint8(0);
 -- vertical-center
 
 ![caniuse.com](images/web-bluetooth-caniuse.png)
-<p class="caption">caniuse.com</p>
+<p class="caption">[caniuse.com](https://caniuse.com)</p>
 
 -- vertical-center
 
