@@ -11,13 +11,15 @@ controls: false
 
 <img src="images/sbrowser5.4.png" alt="Samsung Internet logo" class="w-100"/>
 
---
+-- vertical-center
 
-<h2 class="vertical-center">The physical world and the digital world are merging...</h2>
+## The physical world and the digital world are merging...
 
---
+-- vertical-center
 
-<h2 class="vertical-center">...And your (shiny Samsung) smartphone is at the centre.</h2>
+### ...And your (shiny Samsung) smartphone is at the centre.
+
+<img src="images/bluetooth-smartphone-centre.png" alt="Galaxy S8 and Bluetooth devices" style="max-width: 70%"/>
 
 --
 
@@ -41,7 +43,7 @@ controls: false
 
 -- vertical-center
 
-## Bluetooth Low Energy
+## Bluetooth Low Energy (BLE)
 
 ![BLE](images/ble-phone.png)
 
@@ -53,23 +55,85 @@ controls: false
 * Can last years on coin cell batteries
 * ~100 kbps throughput (vs 24 Mbps!)
 
+-- vertical-center code-bigger gatt
+
+### GATT: Generic ATTribute
+
+```
+Profile
+ |_ Service
+ |  |_ Characteristic
+ |  |_ Characteristic
+ |  |_ Characteristic
+ |_ Service
+    |_ Characteristic
+    |_ Characteristic
+ ...
+```
+
 -- vertical-center
 
-<p class="media-container fill-h">![BLE profiles etc.](images/bluetooth-profiles-etc.png)</p>
+## Standard profiles
+
+* Battery Service
+* Blood Pressure
+* Cycling Speed and Cadence
+* Health Thermometer
+* Location &amp; Navigation
+* ...
+
+<p class="caption">[www.bluetooth.com/specifications/gatt/services](https://www.bluetooth.com/specifications/gatt/services)</a>
 
 -- vertical-center
 
-<p class="media-container vertical-center fill-w">![BLE characteristic properties](images/ble-characteristic-props.png)</p>
-<p class="caption">Generic ATTribute profile (GATT)</p>
+## Or you can design your own
 
 -- vertical-center
 
-## Comms based on Hex
+## Characteristics
 
-* `0xff === 255`
+<img src="images/ble-characteristic-props.png" alt="BLE characteristic properties" style="width: 800px"/>
+
+-- vertical-center
+
+## Comms represented by Hex
+
+
+
+<p class="caption">Example packet</p>
+
+-- vertical-center
+
+* 20 bytes per packet
+* `0xff === 255` (1 byte)
 * `parseInt('ff', 16) === 255`
-* Uint8Array useful for data buffers
-* [github.com/pebblecode/hex-utils](https://github.com/pebblecode/hex-utils)
+
+<p class="caption">[github.com/pebblecode/hex-utils](https://github.com/pebblecode/hex-utils)</p>
+
+-- code-bigger vertical-center
+
+``` javascript
+// Length of 12 bytes
+var buffer = new ArrayBuffer(12);
+
+// ...Read data into the buffer...
+var array = new Uint8Array(buffer);
+
+// Gives e.g. 255 / 0xff:
+var my8BitInt = array[0];
+```
+
+-- code-bigger vertical-center
+
+``` javascript
+var buffer = new ArrayBuffer(12);
+var dataView = new DataView(buffer);
+
+// Gives e.g. 255 / 0xff:
+var my8BitInt = dataView.getUint8(0);
+```
+
+<p class="caption">[html5rocks.com/en/tutorials/webgl/typed_arrays/](http://www.html5rocks.com/en/tutorials/webgl/typed_arrays/)</p>
 
 --
 
@@ -88,7 +152,7 @@ controls: false
 
 ## *Previously...*
  
-### Web developers had to use Cordova, React Native etc.
+### Web devs had to use Node, Cordova, React Native etc.
 
 <img src="images/crowd-boo.jpg" alt="Angry crowd" style="width: 70%;"/>
 
@@ -99,6 +163,11 @@ controls: false
 ## Web Bluetooth! 🎉
 
 <img src="images/ble-logo.png" alt="BLE logo" class="w-300"/>
+
+-- vertical-center
+
+* Bluetooth Low Energy only
+* "Central" only (i.e. controller, not "peripheral")
 
 -- vertical-center
 
@@ -180,6 +249,22 @@ navigator.bluetooth.requestDevice(options)
 
 -- vertical-center
 
+## Control your slides
+
+<video controls style="height: 75%">
+  <source src="videos/wb-slides.mp4"/>
+</video>
+
+-- vertical-center
+
+## Control your Puck.js
+
+<video controls style="width: 75%">
+  <source src="videos/puckjs-web-bluetooth.mp4"/>
+</video>
+
+-- vertical-center
+
 # Part 2: Sniffin' n' debuggin'
 
 -- vertical-center
@@ -200,17 +285,17 @@ navigator.bluetooth.requestDevice(options)
   </ul>
 </div>  
 
---
+-- vertical-center
 
-<img alt="Hackaball" src="images/hackaball.jpg" width="90%"/>
+<img alt="Hackaball" src="images/hackaball.jpg" style="max-width:85%"/>
 <p class="caption">[hackaball.com](http://www.hackaball.com/)</p>
 
---
+-- vertical-center
 
 <img alt="CySmart" src="images/cysmart.png" style="max-height:calc(100vh - 4em)"/>
 <p class="caption">[CySmart with CySmart BLE dongle (Windows)](http://www.cypress.com/documentation/software-and-drivers/cysmart-bluetooth-le-test-and-debug-tool)</p>
 
---
+-- vertical-center
 
 <img alt="Bluetooth apps" src="images/bluetooth-debugging-apps.png" style="max-height:calc(100vh - 4em)"/>
 <p class="caption">Bluetooth debugging apps: [LightBlue](https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8), [Bluefruit](https://play.google.com/store/apps/details?id=com.adafruit.bluefruit.le.connect&hl=en), [CySmart](https://play.google.com/store/apps/details?id=com.cypress.cysmart&hl=en)</p>
@@ -290,11 +375,11 @@ navigator.bluetooth.requestDevice(options)
 
 -- vertical-center
 
-## Things we could try next
+## Things we could try next?
 
-* Puck.js
-* Nordic
-* ...
+* Our Nordic device
+* Our freescale device
+* `$yourFavouriteBLEDevice`
 
 -- vertical-center
 

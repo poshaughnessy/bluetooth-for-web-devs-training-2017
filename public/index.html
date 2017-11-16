@@ -139,6 +139,7 @@ pre {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 3px;
+  z-index: 1;
 }
 
 .progress-bar {
@@ -774,12 +775,12 @@ p {
 
 a {
   text-decoration: none;
-  color: #1070c1;
+  color: #706cf5;
 }
 
 a:hover {
-  color: #4dc7ef;
-  border-bottom: 1px solid #4dc7ef;
+  color: #8885f5;
+  border-bottom: 1px solid #8885f5;
 }
 
 hr {
@@ -809,7 +810,7 @@ table th {
 .progress-bar {
   height: 3px;
   width: 0;
-  background-color: #a6e22e;
+  background-color: #706cf5;
   -webkit-transition: width .15s ease-out;
   -moz-transition: width .15s ease-out;
   -o-transition: width .15s ease-out;
@@ -829,12 +830,24 @@ table th {
 code {
   font-family: 'Fira Mono', Courier, sans-serif;
   color: #333;
-  font-size: 1.5em;
   border-radius: 3px;
+}
+
+pre code {
+  font-size: 1.5em;
 }
 
 .code-bigger code {
   font-size: 2em;
+}
+
+.gatt pre {
+  padding: 0 2em;
+  background-color: #eee;
+}
+
+.gatt code {
+  line-height: 1.8em;
 }
 
 pre code {
@@ -968,11 +981,14 @@ pre .xml .cdata {
 <p><img src="images/sbrowser5.4.png" alt="Samsung Internet logo" class="w-100"/></p>
 </section>
   </div>
-  <div class="slide hidden" id="slide-2">
-    <section class="slide-content"><h2 class="vertical-center">The physical world and the digital world are merging...</h2></section>
+  <div class="slide hidden  vertical-center" id="slide-2">
+    <section class="slide-content"><h2 id="the-physical-world-and-the-digital-world-are-merging-">The physical world and the digital world are merging...</h2>
+</section>
   </div>
-  <div class="slide hidden" id="slide-3">
-    <section class="slide-content"><h2 class="vertical-center">...And your (shiny Samsung) smartphone is at the centre.</h2></section>
+  <div class="slide hidden  vertical-center" id="slide-3">
+    <section class="slide-content"><h3 id="-and-your-shiny-samsung-smartphone-is-at-the-centre-">...And your (shiny Samsung) smartphone is at the centre.</h3>
+<p><img src="images/bluetooth-smartphone-centre.png" alt="Galaxy S8 and Bluetooth devices" style="max-width: 70%"/></p>
+</section>
   </div>
   <div class="slide hidden" id="slide-4">
     <section class="slide-content"><p class="media-container fill-h"><img src="images/anki-overdrive.gif" alt="Anki Overdrive"></p>
@@ -991,7 +1007,7 @@ pre .xml .cdata {
 <p class="caption"><a href="http://www.pokemongo.com/en-us/pokemon-go-plus/">Pokemon Go Plus watch</a></p></section>
   </div>
   <div class="slide hidden  vertical-center" id="slide-8">
-    <section class="slide-content"><h2 id="bluetooth-low-energy">Bluetooth Low Energy</h2>
+    <section class="slide-content"><h2 id="bluetooth-low-energy-ble-">Bluetooth Low Energy (BLE)</h2>
 <p><img src="images/ble-phone.png" alt="BLE"></p>
 </section>
   </div>
@@ -1004,70 +1020,126 @@ pre .xml .cdata {
 </ul>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-10">
-    <section class="slide-content"><p class="media-container fill-h"><img src="images/bluetooth-profiles-etc.png" alt="BLE profiles etc."></p></section>
-  </div>
-  <div class="slide hidden  vertical-center" id="slide-11">
-    <section class="slide-content"><p class="media-container vertical-center fill-w"><img src="images/ble-characteristic-props.png" alt="BLE characteristic properties"></p>
-<p class="caption">Generic ATTribute profile (GATT)</p></section>
-  </div>
-  <div class="slide hidden  vertical-center" id="slide-12">
-    <section class="slide-content"><h2 id="comms-based-on-hex">Comms based on Hex</h2>
-<ul>
-<li><code>0xff === 255</code></li>
-<li><code>parseInt(&#39;ff&#39;, 16) === 255</code></li>
-<li>Uint8Array useful for data buffers</li>
-<li><a href="https://github.com/pebblecode/hex-utils">github.com/pebblecode/hex-utils</a></li>
-</ul>
+  <div class="slide hidden  vertical-center code-bigger gatt" id="slide-10">
+    <section class="slide-content"><h3 id="gatt-generic-attribute">GATT: Generic ATTribute</h3>
+<pre><code>Profile
+ |_ Service
+ |  |_ Characteristic
+ |  |_ Characteristic
+ |  |_ Characteristic
+ |_ Service
+    |_ Characteristic
+    |_ Characteristic
+ ...</code></pre>
 </section>
   </div>
-  <div class="slide hidden" id="slide-13">
-    <section class="slide-content"><h2 class="vertical-center">Here&#39;s one I helped make earlier...</h2></section>
+  <div class="slide hidden  vertical-center" id="slide-11">
+    <section class="slide-content"><h2 id="standard-profiles">Standard profiles</h2>
+<ul>
+<li>Battery Service</li>
+<li>Blood Pressure</li>
+<li>Cycling Speed and Cadence</li>
+<li>Health Thermometer</li>
+<li>Location &amp; Navigation</li>
+<li>...</li>
+</ul>
+<p><p class="caption"><a href="https://www.bluetooth.com/specifications/gatt/services">www.bluetooth.com/specifications/gatt/services</a></a></p>
+</section>
+  </div>
+  <div class="slide hidden  vertical-center" id="slide-12">
+    <section class="slide-content"><h2 id="or-you-can-design-your-own">Or you can design your own</h2>
+</section>
+  </div>
+  <div class="slide hidden  vertical-center" id="slide-13">
+    <section class="slide-content"><h2 id="characteristics">Characteristics</h2>
+<p><img src="images/ble-characteristic-props.png" alt="BLE characteristic properties" style="width: 800px"/></p>
+</section>
   </div>
   <div class="slide hidden  vertical-center" id="slide-14">
+    <section class="slide-content"><h2 id="comms-represented-by-hex">Comms represented by Hex</h2>
+<p class="caption">Example packet</p></section>
+  </div>
+  <div class="slide hidden  vertical-center" id="slide-15">
+    <section class="slide-content"><ul>
+<li>20 bytes per packet</li>
+<li><code>0xff === 255</code> (1 byte)</li>
+<li><code>parseInt(&#39;ff&#39;, 16) === 255</code></li>
+</ul>
+<p class="caption"><a href="https://github.com/pebblecode/hex-utils">github.com/pebblecode/hex-utils</a></p></section>
+  </div>
+  <div class="slide hidden  code-bigger vertical-center" id="slide-16">
+    <section class="slide-content"><pre><code class="lang-javascript"><span class="hljs-comment">// Length of 12 bytes</span>
+<span class="hljs-keyword">var</span> buffer = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ArrayBuffer</span>(<span class="hljs-number">12</span>);
+
+<span class="hljs-comment">// ...Read data into the buffer...</span>
+<span class="hljs-keyword">var</span> array = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(buffer);
+
+<span class="hljs-comment">// Gives e.g. 255 / 0xff:</span>
+<span class="hljs-keyword">var</span> my8BitInt = array[<span class="hljs-number">0</span>];</code></pre>
+</section>
+  </div>
+  <div class="slide hidden  code-bigger vertical-center" id="slide-17">
+    <section class="slide-content"><pre><code class="lang-javascript"><span class="hljs-keyword">var</span> buffer = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ArrayBuffer</span>(<span class="hljs-number">12</span>);
+<span class="hljs-keyword">var</span> dataView = <span class="hljs-keyword">new</span> <span class="hljs-built_in">DataView</span>(buffer);
+
+<span class="hljs-comment">// Gives e.g. 255 / 0xff:</span>
+<span class="hljs-keyword">var</span> my8BitInt = dataView.getUint8(<span class="hljs-number">0</span>);</code></pre>
+<p class="caption"><a href="http://www.html5rocks.com/en/tutorials/webgl/typed_arrays/">html5rocks.com/en/tutorials/webgl/typed_arrays/</a></p></section>
+  </div>
+  <div class="slide hidden" id="slide-18">
+    <section class="slide-content"><h2 class="vertical-center">Here&#39;s one I helped make earlier...</h2></section>
+  </div>
+  <div class="slide hidden  vertical-center" id="slide-19">
     <section class="slide-content"><p class="media-container fill-h"><img src="images/bybox-stockonnect.gif" alt="ByBox"></p>
 <p class="caption"><a href="https://www.bybox.com/">ByBox Stockonnect app developed by pebble {code}</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-15">
+  <div class="slide hidden  vertical-center" id="slide-20">
     <section class="slide-content"><p class="media-container vertical-center fill-w"><img src="images/bybox-comms.png" alt="BLE comms"></p></section>
   </div>
-  <div class="slide hidden  vertical-center previously-now" id="slide-16">
+  <div class="slide hidden  vertical-center previously-now" id="slide-21">
     <section class="slide-content"><h2 id="-previously-"><em>Previously...</em></h2>
-<h3 id="web-developers-had-to-use-cordova-react-native-etc-">Web developers had to use Cordova, React Native etc.</h3>
+<h3 id="web-devs-had-to-use-node-cordova-react-native-etc-">Web devs had to use Node, Cordova, React Native etc.</h3>
 <p><img src="images/crowd-boo.jpg" alt="Angry crowd" style="width: 70%;"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-17">
+  <div class="slide hidden  vertical-center" id="slide-22">
     <section class="slide-content"><h2 id="-now-"><em>Now...</em></h2>
 <h2 id="web-bluetooth-">Web Bluetooth! 🎉</h2>
 <p><img src="images/ble-logo.png" alt="BLE logo" class="w-300"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-18">
+  <div class="slide hidden  vertical-center" id="slide-23">
+    <section class="slide-content"><ul>
+<li>Bluetooth Low Energy only</li>
+<li>&quot;Central&quot; only (i.e. controller, not &quot;peripheral&quot;)</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  vertical-center" id="slide-24">
     <section class="slide-content"><p><img src="images/web-bluetooth-caniuse.png" alt="caniuse.com"></p>
 <p class="caption">caniuse.com</p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-19">
+  <div class="slide hidden  vertical-center" id="slide-25">
     <section class="slide-content"><h2 id="and-this-awesome-browser-called-samsung-internet-has-it-behind-a-flag-">And this awesome browser called Samsung Internet has it behind a flag!</h2>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-20">
+  <div class="slide hidden  vertical-center" id="slide-26">
     <section class="slide-content"><h1 id="part-1-cutting-our-blue-teeth">Part 1: Cutting our (Blue)teeth</h1>
 </section>
   </div>
-  <div class="slide hidden  vertical-center code-bigger" id="slide-21">
+  <div class="slide hidden  vertical-center code-bigger" id="slide-27">
     <section class="slide-content"><pre><code class="lang-javascript"><span class="hljs-keyword">let</span> options = {filters: [{
                  services: [<span class="hljs-string">'battery_service'</span>] }] };
 
 navigator.bluetooth.requestDevice(options)</code></pre>
 </section>
   </div>
-  <div class="slide hidden  vertical-center two-images" id="slide-22">
+  <div class="slide hidden  vertical-center two-images" id="slide-28">
     <section class="slide-content"><div>
   <img src="images/pairing-prompt1.png" alt="Bluetooth pairing prompt 1"> <img src="images/pairing-prompt2.png" alt="Bluetooth pairing prompt 2">
 </div></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-23">
+  <div class="slide hidden  vertical-center" id="slide-29">
     <section class="slide-content"><pre><code class="lang-javascript">  ...
 
   .then(device =&gt; device.connectGATT())
@@ -1084,45 +1156,57 @@ navigator.bluetooth.requestDevice(options)</code></pre>
   })</code></pre>
 </section>
   </div>
-  <div class="slide hidden  vertical-center code-bigger" id="slide-24">
+  <div class="slide hidden  vertical-center code-bigger" id="slide-30">
     <section class="slide-content"><pre><code class="lang-javascript">  .then(value =&gt; {
     <span class="hljs-keyword">let</span> bytes = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(value.buffer);
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Battery level: <span class="hljs-subst">${bytes[0]}</span>`</span>);
   });</code></pre>
 <div class="caption"><a href="http://bit.ly/chrome-bluetooth-guide">bit.ly/chrome-bluetooth-guide</a></div></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-25">
+  <div class="slide hidden  vertical-center" id="slide-31">
     <section class="slide-content"><h2 class="vertical-center">Demo time</h2></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-26">
+  <div class="slide hidden  vertical-center" id="slide-32">
     <section class="slide-content"><p class="media-container"><img src="images/web-drone-screenshot.png" alt="web-bluetooth-parrot-drone"></p>
 <p class="caption"><a href="http://bit.ly/web-bluetooth-drone">bit.ly/web-bluetooth-drone</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-27">
+  <div class="slide hidden  vertical-center" id="slide-33">
     <section class="slide-content"><div class="vertical-center">
     <h2>In case of demo fail</h2>
     <a href="https://youtu.be/-FO9thLaiug">bit.ly/web-bluetooth-drone-video</a>
 </div></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-28">
+  <div class="slide hidden  vertical-center" id="slide-34">
     <section class="slide-content"><h2 id="code-time">Code time</h2>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-29">
+  <div class="slide hidden  vertical-center" id="slide-35">
+    <section class="slide-content"><h2 id="control-your-slides">Control your slides</h2>
+<video controls style="height: 75%">
+  <source src="videos/wb-slides.mp4"/>
+</video></section>
+  </div>
+  <div class="slide hidden  vertical-center" id="slide-36">
+    <section class="slide-content"><h2 id="control-your-puck-js">Control your Puck.js</h2>
+<video controls style="width: 75%">
+  <source src="videos/puckjs-web-bluetooth.mp4"/>
+</video></section>
+  </div>
+  <div class="slide hidden  vertical-center" id="slide-37">
     <section class="slide-content"><h1 id="part-2-sniffin-n-debuggin-">Part 2: Sniffin&#39; n&#39; debuggin&#39;</h1>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-30">
+  <div class="slide hidden  vertical-center" id="slide-38">
     <section class="slide-content"><blockquote>
 <p>“This is a short list of issues you will encounter if you try to use native Android BLE...”</p>
 </blockquote>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-31">
+  <div class="slide hidden  vertical-center" id="slide-39">
     <section class="slide-content"><p class="media-container fill-h"><img src="images/sweetblue.png" alt="Sweetblue"></p>
 <p class="caption"><a href="http://bit.ly/sweetblue-android">bit.ly/sweetblue-android</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-32">
+  <div class="slide hidden  vertical-center" id="slide-40">
     <section class="slide-content"><div class="vertical-center">
   <ul>
       <li>Start with a small list of supported devices</li>
@@ -1130,92 +1214,92 @@ navigator.bluetooth.requestDevice(options)</code></pre>
   </ul>
 </div></section>
   </div>
-  <div class="slide hidden" id="slide-33">
-    <section class="slide-content"><p><img alt="Hackaball" src="images/hackaball.jpg" width="90%"/></p>
+  <div class="slide hidden  vertical-center" id="slide-41">
+    <section class="slide-content"><p><img alt="Hackaball" src="images/hackaball.jpg" style="max-width:85%"/></p>
 <p class="caption"><a href="http://www.hackaball.com/">hackaball.com</a></p></section>
   </div>
-  <div class="slide hidden" id="slide-34">
+  <div class="slide hidden  vertical-center" id="slide-42">
     <section class="slide-content"><p><img alt="CySmart" src="images/cysmart.png" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption"><a href="http://www.cypress.com/documentation/software-and-drivers/cysmart-bluetooth-le-test-and-debug-tool">CySmart with CySmart BLE dongle (Windows)</a></p></section>
   </div>
-  <div class="slide hidden" id="slide-35">
+  <div class="slide hidden  vertical-center" id="slide-43">
     <section class="slide-content"><p><img alt="Bluetooth apps" src="images/bluetooth-debugging-apps.png" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption">Bluetooth debugging apps: <a href="https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8">LightBlue</a>, <a href="https://play.google.com/store/apps/details?id=com.adafruit.bluefruit.le.connect&amp;hl=en">Bluefruit</a>, <a href="https://play.google.com/store/apps/details?id=com.cypress.cysmart&amp;hl=en">CySmart</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-36">
+  <div class="slide hidden  vertical-center" id="slide-44">
     <section class="slide-content"><p><img alt="Bluefruit app (Android)" src="images/bluefruit-info.png" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption">Bluefruit (Android)</p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-37">
+  <div class="slide hidden  vertical-center" id="slide-45">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-1.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-38">
+  <div class="slide hidden  vertical-center" id="slide-46">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom1.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-39">
+  <div class="slide hidden  vertical-center" id="slide-47">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom2.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-40">
+  <div class="slide hidden  vertical-center" id="slide-48">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom3.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-41">
+  <div class="slide hidden  vertical-center" id="slide-49">
     <section class="slide-content"><p><img alt="Wireshark" src="images/adafruit-ble-sniff.jpg" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption"><a href="https://www.wireshark.org/">Wireshark</a> with <a href="https://shop.pimoroni.com/products/adafruit-bluefruit-le-sniffer-ble-4-0-nrf51822-v1-0">Bluefruit BLE sniffer</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-42">
+  <div class="slide hidden  vertical-center" id="slide-50">
     <section class="slide-content"><p><img alt="ble-sniffer-osx" src="images/ble-sniffer-osx.png" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption"><a href="https://sourceforge.net/projects/nrfblesnifferosx/">ble-sniffer-osx</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-43">
+  <div class="slide hidden  vertical-center" id="slide-51">
     <section class="slide-content"><p><img alt="Hackaball advertising" src="images/advertising.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-44">
+  <div class="slide hidden  vertical-center" id="slide-52">
     <section class="slide-content"><p><img alt="Hackaball advertising" src="images/advertising-zoom.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-45">
+  <div class="slide hidden  vertical-center" id="slide-53">
     <section class="slide-content"><p><img alt="Hackaball scan response" src="images/scan-response.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-46">
+  <div class="slide hidden  vertical-center" id="slide-54">
     <section class="slide-content"><p><img alt="Hackaball scan response" src="images/scan-response-zoom.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-47">
+  <div class="slide hidden  vertical-center" id="slide-55">
     <section class="slide-content"><p><img alt="A Hackaball command" src="images/hackaball-sniffing.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-48">
+  <div class="slide hidden  vertical-center" id="slide-56">
     <section class="slide-content"><p><img alt="A Hackaball command" src="images/hackaball-sniffing-zoom.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-49">
+  <div class="slide hidden  vertical-center" id="slide-57">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom4.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-50">
+  <div class="slide hidden  vertical-center" id="slide-58">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom5.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-51">
+  <div class="slide hidden  vertical-center" id="slide-59">
     <section class="slide-content"><p><img src="images/tools-deprecated.png" alt="Tools deprecated"></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-52">
-    <section class="slide-content"><h2 id="things-we-could-try-next">Things we could try next</h2>
+  <div class="slide hidden  vertical-center" id="slide-60">
+    <section class="slide-content"><h2 id="things-we-could-try-next-">Things we could try next?</h2>
 <ul>
-<li>Puck.js</li>
-<li>Nordic</li>
-<li>...</li>
+<li>Our Nordic device</li>
+<li>Our freescale device</li>
+<li><code>$yourFavouriteBLEDevice</code></li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-53">
+  <div class="slide hidden  vertical-center" id="slide-61">
     <section class="slide-content"><h1 id="the-physical-world-is-at-our-command-">The physical world is at our command! 🤖</h1>
 </section>
   </div>

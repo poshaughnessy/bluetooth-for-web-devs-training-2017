@@ -417,12 +417,12 @@ p {
 
 a {
   text-decoration: none;
-  color: #1070c1;
+  color: #706cf5;
 }
 
 a:hover {
-  color: #4dc7ef;
-  border-bottom: 1px solid #4dc7ef;
+  color: #8885f5;
+  border-bottom: 1px solid #8885f5;
 }
 
 hr {
@@ -452,7 +452,7 @@ table th {
 .progress-bar {
   height: 3px;
   width: 0;
-  background-color: #a6e22e;
+  background-color: #706cf5;
   -webkit-transition: width .15s ease-out;
   -moz-transition: width .15s ease-out;
   -o-transition: width .15s ease-out;
@@ -472,12 +472,24 @@ table th {
 code {
   font-family: 'Fira Mono', Courier, sans-serif;
   color: #333;
-  font-size: 1.5em;
   border-radius: 3px;
+}
+
+pre code {
+  font-size: 1.5em;
 }
 
 .code-bigger code {
   font-size: 2em;
+}
+
+.gatt pre {
+  padding: 0 2em;
+  background-color: #eee;
+}
+
+.gatt code {
+  line-height: 1.8em;
 }
 
 pre code {
