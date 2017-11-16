@@ -1071,7 +1071,8 @@ pre .xml .cdata {
     <section class="slide-content"><pre><code class="lang-javascript"><span class="hljs-comment">// Length of 12 bytes</span>
 <span class="hljs-keyword">var</span> buffer = <span class="hljs-keyword">new</span> <span class="hljs-built_in">ArrayBuffer</span>(<span class="hljs-number">12</span>);
 
-<span class="hljs-comment">// ...Read data into the buffer...</span>
+<span class="hljs-comment">// ...Read data into the buffer, then...</span>
+
 <span class="hljs-keyword">var</span> array = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(buffer);
 
 <span class="hljs-comment">// Gives e.g. 255 / 0xff:</span>
@@ -1094,52 +1095,61 @@ pre .xml .cdata {
 <p class="caption"><a href="https://www.bybox.com/">ByBox Stockonnect app developed by pebble {code}</a></p></section>
   </div>
   <div class="slide hidden  vertical-center" id="slide-20">
+    <section class="slide-content"><h2 id="security">Security</h2>
+<ul>
+<li>&quot;Just Works Pairing&quot;</li>
+<li>(As we&#39;ll see later) communication can be sniffed!</li>
+<li>We addressed through a random seed &amp; key-based encryption</li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  vertical-center" id="slide-21">
     <section class="slide-content"><p class="media-container vertical-center fill-w"><img src="images/bybox-comms.png" alt="BLE comms"></p></section>
   </div>
-  <div class="slide hidden  vertical-center previously-now" id="slide-21">
+  <div class="slide hidden  vertical-center previously-now" id="slide-22">
     <section class="slide-content"><h2 id="-previously-"><em>Previously...</em></h2>
 <h3 id="web-devs-had-to-use-node-cordova-react-native-etc-">Web devs had to use Node, Cordova, React Native etc.</h3>
 <p><img src="images/crowd-boo.jpg" alt="Angry crowd" style="width: 70%;"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-22">
+  <div class="slide hidden  vertical-center" id="slide-23">
     <section class="slide-content"><h2 id="-now-"><em>Now...</em></h2>
 <h2 id="web-bluetooth-">Web Bluetooth! 🎉</h2>
 <p><img src="images/ble-logo.png" alt="BLE logo" class="w-300"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-23">
+  <div class="slide hidden  vertical-center" id="slide-24">
     <section class="slide-content"><ul>
 <li>Bluetooth Low Energy only</li>
 <li>&quot;Central&quot; only (i.e. controller, not &quot;peripheral&quot;)</li>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-24">
+  <div class="slide hidden  vertical-center" id="slide-25">
     <section class="slide-content"><p><img src="images/web-bluetooth-caniuse.png" alt="caniuse.com"></p>
 <p class="caption"><a href="https://caniuse.com">caniuse.com</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-25">
+  <div class="slide hidden  vertical-center" id="slide-26">
     <section class="slide-content"><h2 id="and-this-awesome-browser-called-samsung-internet-has-it-behind-a-flag-">And this awesome browser called Samsung Internet has it behind a flag!</h2>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-26">
+  <div class="slide hidden  vertical-center" id="slide-27">
     <section class="slide-content"><h1 id="part-1-cutting-our-blue-teeth">Part 1: Cutting our (Blue)teeth</h1>
 </section>
   </div>
-  <div class="slide hidden  vertical-center code-bigger" id="slide-27">
+  <div class="slide hidden  vertical-center code-bigger" id="slide-28">
     <section class="slide-content"><pre><code class="lang-javascript"><span class="hljs-keyword">let</span> options = {filters: [{
                  services: [<span class="hljs-string">'battery_service'</span>] }] };
 
 navigator.bluetooth.requestDevice(options)</code></pre>
 <p class="caption"><a href="https://github.com/poshaughnessy/web-bluetooth-parrot-drone/blob/master/js/drone.js#L110">Drone example here</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center two-images" id="slide-28">
+  <div class="slide hidden  vertical-center two-images" id="slide-29">
     <section class="slide-content"><div>
   <img src="images/pairing-prompt1.png" alt="Bluetooth pairing prompt 1"> <img src="images/pairing-prompt2.png" alt="Bluetooth pairing prompt 2">
 </div></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-29">
+  <div class="slide hidden  vertical-center" id="slide-30">
     <section class="slide-content"><pre><code class="lang-javascript">  ...
 
   .then(device =&gt; device.connectGATT())
@@ -1156,57 +1166,57 @@ navigator.bluetooth.requestDevice(options)</code></pre>
   })</code></pre>
 </section>
   </div>
-  <div class="slide hidden  vertical-center code-bigger" id="slide-30">
+  <div class="slide hidden  vertical-center code-bigger" id="slide-31">
     <section class="slide-content"><pre><code class="lang-javascript">  .then(value =&gt; {
     <span class="hljs-keyword">let</span> bytes = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Uint8Array</span>(value.buffer);
     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Battery level: <span class="hljs-subst">${bytes[0]}</span>`</span>);
   });</code></pre>
 <div class="caption"><a href="http://bit.ly/chrome-bluetooth-guide">bit.ly/chrome-bluetooth-guide</a></div></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-31">
+  <div class="slide hidden  vertical-center" id="slide-32">
     <section class="slide-content"><h2 class="vertical-center">Demo time</h2></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-32">
+  <div class="slide hidden  vertical-center" id="slide-33">
     <section class="slide-content"><p class="media-container"><img src="images/web-drone-screenshot.png" alt="web-bluetooth-parrot-drone"></p>
 <p class="caption"><a href="http://bit.ly/web-bluetooth-drone">bit.ly/web-bluetooth-drone</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-33">
+  <div class="slide hidden  vertical-center" id="slide-34">
     <section class="slide-content"><div class="vertical-center">
     <h2>In case of demo fail</h2>
     <a href="https://youtu.be/-FO9thLaiug">bit.ly/web-bluetooth-drone-video</a>
 </div></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-34">
+  <div class="slide hidden  vertical-center" id="slide-35">
     <section class="slide-content"><h2 id="code-time">Code time</h2>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-35">
+  <div class="slide hidden  vertical-center" id="slide-36">
     <section class="slide-content"><h2 id="control-your-slides">Control your slides</h2>
 <video controls style="height: 75%">
   <source src="videos/wb-slides.mp4"/>
 </video></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-36">
+  <div class="slide hidden  vertical-center" id="slide-37">
     <section class="slide-content"><h2 id="control-your-puck-js">Control your Puck.js</h2>
 <video controls style="width: 75%">
   <source src="videos/puckjs-web-bluetooth.mp4"/>
 </video></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-37">
+  <div class="slide hidden  vertical-center" id="slide-38">
     <section class="slide-content"><h1 id="part-2-sniffin-n-debuggin-">Part 2: Sniffin&#39; n&#39; debuggin&#39;</h1>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-38">
+  <div class="slide hidden  vertical-center" id="slide-39">
     <section class="slide-content"><blockquote>
 <p>“This is a short list of issues you will encounter if you try to use native Android BLE...”</p>
 </blockquote>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-39">
+  <div class="slide hidden  vertical-center" id="slide-40">
     <section class="slide-content"><p class="media-container fill-h"><img src="images/sweetblue.png" alt="Sweetblue"></p>
 <p class="caption"><a href="http://bit.ly/sweetblue-android">bit.ly/sweetblue-android</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-40">
+  <div class="slide hidden  vertical-center" id="slide-41">
     <section class="slide-content"><div class="vertical-center">
   <ul>
       <li>Start with a small list of supported devices</li>
@@ -1214,83 +1224,83 @@ navigator.bluetooth.requestDevice(options)</code></pre>
   </ul>
 </div></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-41">
+  <div class="slide hidden  vertical-center" id="slide-42">
     <section class="slide-content"><p><img alt="Hackaball" src="images/hackaball.jpg" style="max-width:85%"/></p>
 <p class="caption"><a href="http://www.hackaball.com/">hackaball.com</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-42">
+  <div class="slide hidden  vertical-center" id="slide-43">
     <section class="slide-content"><p><img alt="CySmart" src="images/cysmart.png" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption"><a href="http://www.cypress.com/documentation/software-and-drivers/cysmart-bluetooth-le-test-and-debug-tool">CySmart with CySmart BLE dongle (Windows)</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-43">
+  <div class="slide hidden  vertical-center" id="slide-44">
     <section class="slide-content"><p><img alt="Bluetooth apps" src="images/bluetooth-debugging-apps.png" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption">Bluetooth debugging apps: <a href="https://itunes.apple.com/us/app/lightblue-explorer-bluetooth/id557428110?mt=8">LightBlue</a>, <a href="https://play.google.com/store/apps/details?id=com.adafruit.bluefruit.le.connect&amp;hl=en">Bluefruit</a>, <a href="https://play.google.com/store/apps/details?id=com.cypress.cysmart&amp;hl=en">CySmart</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-44">
+  <div class="slide hidden  vertical-center" id="slide-45">
     <section class="slide-content"><p><img alt="Bluefruit app (Android)" src="images/bluefruit-info.png" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption">Bluefruit (Android)</p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-45">
+  <div class="slide hidden  vertical-center" id="slide-46">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-1.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-46">
+  <div class="slide hidden  vertical-center" id="slide-47">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom1.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-47">
+  <div class="slide hidden  vertical-center" id="slide-48">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom2.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-48">
+  <div class="slide hidden  vertical-center" id="slide-49">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom3.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-49">
+  <div class="slide hidden  vertical-center" id="slide-50">
     <section class="slide-content"><p><img alt="Wireshark" src="images/adafruit-ble-sniff.jpg" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption"><a href="https://www.wireshark.org/">Wireshark</a> with <a href="https://shop.pimoroni.com/products/adafruit-bluefruit-le-sniffer-ble-4-0-nrf51822-v1-0">Bluefruit BLE sniffer</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-50">
+  <div class="slide hidden  vertical-center" id="slide-51">
     <section class="slide-content"><p><img alt="ble-sniffer-osx" src="images/ble-sniffer-osx.png" style="max-height:calc(100vh - 4em)"/></p>
 <p class="caption"><a href="https://sourceforge.net/projects/nrfblesnifferosx/">ble-sniffer-osx</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-51">
+  <div class="slide hidden  vertical-center" id="slide-52">
     <section class="slide-content"><p><img alt="Hackaball advertising" src="images/advertising.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-52">
+  <div class="slide hidden  vertical-center" id="slide-53">
     <section class="slide-content"><p><img alt="Hackaball advertising" src="images/advertising-zoom.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-53">
+  <div class="slide hidden  vertical-center" id="slide-54">
     <section class="slide-content"><p><img alt="Hackaball scan response" src="images/scan-response.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-54">
+  <div class="slide hidden  vertical-center" id="slide-55">
     <section class="slide-content"><p><img alt="Hackaball scan response" src="images/scan-response-zoom.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-55">
+  <div class="slide hidden  vertical-center" id="slide-56">
     <section class="slide-content"><p><img alt="A Hackaball command" src="images/hackaball-sniffing.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-56">
+  <div class="slide hidden  vertical-center" id="slide-57">
     <section class="slide-content"><p><img alt="A Hackaball command" src="images/hackaball-sniffing-zoom.png" style="max-height:calc(100vh - 4em)"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-57">
+  <div class="slide hidden  vertical-center" id="slide-58">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom4.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-58">
+  <div class="slide hidden  vertical-center" id="slide-59">
     <section class="slide-content"><p><img alt="Bluez" src="images/bluez-hcitool-gatttool-zoom5.png" width="90%"/></p>
 <p class="caption"><a href="http://www.bluez.org/about/">BlueZ</a></p></section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-59">
+  <div class="slide hidden  vertical-center" id="slide-60">
     <section class="slide-content"><p><img src="images/tools-deprecated.png" alt="Tools deprecated"></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-60">
+  <div class="slide hidden  vertical-center" id="slide-61">
     <section class="slide-content"><h2 id="things-we-could-try-next-">Things we could try next?</h2>
 <ul>
 <li>BB8!</li>
@@ -1300,7 +1310,7 @@ navigator.bluetooth.requestDevice(options)</code></pre>
 </ul>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-61">
+  <div class="slide hidden  vertical-center" id="slide-62">
     <section class="slide-content"><h1 id="the-physical-world-is-at-our-command-">The physical world is at our command! 🤖</h1>
 </section>
   </div>

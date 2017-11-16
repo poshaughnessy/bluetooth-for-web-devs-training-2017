@@ -118,7 +118,8 @@ Profile
 // Length of 12 bytes
 var buffer = new ArrayBuffer(12);
 
-// ...Read data into the buffer...
+// ...Read data into the buffer, then...
+
 var array = new Uint8Array(buffer);
 
 // Gives e.g. 255 / 0xff:
@@ -145,6 +146,14 @@ var my8BitInt = dataView.getUint8(0);
 
 <p class="media-container fill-h">![ByBox](images/bybox-stockonnect.gif)</p>
 <p class="caption">[ByBox Stockonnect app developed by pebble {code}](https://www.bybox.com/)</p>
+
+-- vertical-center
+
+## Security
+
+* "Just Works Pairing"
+* (As we'll see later) communication can be sniffed!
+* We addressed through a random seed & key-based encryption
 
 -- vertical-center
 
