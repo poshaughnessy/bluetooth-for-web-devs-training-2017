@@ -193,6 +193,8 @@ let options = {filters: [{
 navigator.bluetooth.requestDevice(options)
 ```
 
+<p class="caption">[Drone example here](https://github.com/poshaughnessy/web-bluetooth-parrot-drone/blob/master/js/drone.js#L110)</p>
+
 -- vertical-center two-images
 
 <div>
@@ -379,6 +381,7 @@ navigator.bluetooth.requestDevice(options)
 
 ## Things we could try next?
 
+* BB8!
 * Our Nordic device
 * Our freescale device
 * `$yourFavouriteBLEDevice`
