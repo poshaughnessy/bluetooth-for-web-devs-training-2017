@@ -139,7 +139,6 @@ pre {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 3px;
-  z-index: 1;
 }
 
 .progress-bar {
@@ -1055,13 +1054,14 @@ pre .xml .cdata {
 <p><img src="images/ble-characteristic-props.png" alt="BLE characteristic properties" style="width: 800px"/></p>
 </section>
   </div>
-  <div class="slide hidden  vertical-center" id="slide-14">
+  <div class="slide hidden  vertical-center code-bigger" id="slide-14">
     <section class="slide-content"><h2 id="comms-represented-by-hex">Comms represented by Hex</h2>
+<pre><code>02 02 01 06 02 0a 00 11 07 9e ca dc 24 0e e5 a9</code></pre>
 <p class="caption">Example packet</p></section>
   </div>
   <div class="slide hidden  vertical-center" id="slide-15">
     <section class="slide-content"><ul>
-<li>20 bytes per packet</li>
+<li>Upto 20 bytes per packet</li>
 <li><code>0xff === 255</code> (1 byte)</li>
 <li><code>parseInt(&#39;ff&#39;, 16) === 255</code></li>
 </ul>

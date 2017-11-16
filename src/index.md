@@ -94,17 +94,19 @@ Profile
 
 <img src="images/ble-characteristic-props.png" alt="BLE characteristic properties" style="width: 800px"/>
 
--- vertical-center
+-- vertical-center code-bigger
 
 ## Comms represented by Hex
 
-
+```
+02 02 01 06 02 0a 00 11 07 9e ca dc 24 0e e5 a9
+```
 
 <p class="caption">Example packet</p>
 
 -- vertical-center
 
-* 20 bytes per packet
+* Upto 20 bytes per packet
 * `0xff === 255` (1 byte)
 * `parseInt('ff', 16) === 255`
 
