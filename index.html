@@ -139,6 +139,7 @@ pre {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: 3px;
+  z-index: 1;
 }
 
 .progress-bar {
@@ -563,9 +564,15 @@ body {
   padding: 0;
   overflow: visible;
   margin: 0 auto;
-  font-size: 200%;
+  font-size: 150%;
   font-weight: 200;
   line-height: 1.375;
+}
+
+@media (min-width: 600px) {
+  .slide-content {
+    font-size: 180%;
+  }
 }
 
 img {
@@ -1315,6 +1322,10 @@ navigator.bluetooth.requestDevice(options)</code></pre>
 </section>
   </div>
 
+  <div class="controls">
+    <div class="arrow prev"></div>
+    <div class="arrow next"></div>
+  </div>
 
 
   <script type="text/javascript">
